@@ -28,7 +28,6 @@ function CO2emissionsChart() {
   };
 
   var onadd = function() {
-    console.log('add')
     var row = getSelectedRow();
     swal({
       title: 'Leave a comment!',
@@ -52,6 +51,7 @@ function CO2emissionsChart() {
         const dataDiv = '<div class="comment">' + name + ": " + comment + '</div>'
         data.setValue(row, 2, dataDiv)
         timeline.redraw()
+        writeToFirebase(name, comment, row);
       }
       else {
         timeline.cancelAdd();
@@ -62,7 +62,24 @@ function CO2emissionsChart() {
 
   timeline = new links.Timeline(document.getElementById('timeline'), options);
   google.visualization.events.addListener(timeline, 'add', onadd);
+
+  // Write comments from Firebase on initial load.
+  const commentsRef = firebase.database().ref('/comments')
+  commentsRef.once('value', (snapshot) => {
+    const comments = snapshot.val()
+    if (comments) {
+      $.each(comments, (key, value) => {
+        const dataDiv = '<div class="comment">' + value.name + ": " + value.comment + '</div>'
+        data.setValue(value.row, 2, dataDiv)
+      })
+    }
+  })
+
   timeline.draw(data);
+}
+
+function writeToFirebase(name, comment, row) {
+  firebase.database().ref('/comments').push({ name: name, comment: comment, row: row })
 }
 
 function getSelectedRow() {
