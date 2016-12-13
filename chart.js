@@ -30,15 +30,34 @@ function CO2emissionsChart() {
   var onadd = function() {
     console.log('add')
     var row = getSelectedRow();
-    var newContent = prompt("Enter comment, stored on timeline.");
-    if (newContent != undefined) {
-      const dataDiv = '<div class="comment">' + newContent + '</div>'
-      data.setValue(row, 2, dataDiv);
-      timeline.redraw();
-    }
-    else {
-      timeline.cancelAdd();
-    }
+    swal({
+      title: 'Leave a comment!',
+      html:
+        '<input id="swal-input1" class="swal2-input" autofocus>' +
+        '<input id="swal-input2" class="swal2-input">',
+      preConfirm: function() {
+        return new Promise((resolve) => {
+          resolve([
+            $('#swal-input1').val(),
+            $('#swal-input2').val()
+          ])
+        })
+      }
+    })
+    .then((result) => {
+      const name = result[0]
+      const comment = result[1]
+      if (comment != undefined) {
+        const row = getSelectedRow()
+        const dataDiv = '<div class="comment">' + name + ": " + comment + '</div>'
+        data.setValue(row, 2, dataDiv)
+        timeline.redraw()
+      }
+      else {
+        timeline.cancelAdd();
+      }
+    })
+    .catch(swal.noop)
   };
 
   timeline = new links.Timeline(document.getElementById('timeline'), options);
