@@ -32,7 +32,8 @@ function CO2emissionsChart() {
     var row = getSelectedRow();
     var newContent = prompt("Enter comment, stored on timeline.");
     if (newContent != undefined) {
-      data.setValue(row, 2, newContent);
+      const dataDiv = '<div class="comment">' + newContent + '</div>'
+      data.setValue(row, 2, dataDiv);
       timeline.redraw();
     }
     else {
