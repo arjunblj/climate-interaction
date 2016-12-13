@@ -65,21 +65,39 @@
           bottom: 0;
           left: 0;
           width: 100%;
-          top: 200px;
+          top: 220px;
+          margin: 0 2%;
         }
         .text {
           width: 85%;
-          margin: 0 auto 0 15%;
+          margin: 20px auto 0 15%;
+          font-size: 14px;
+        }
+        .instructions {
+          margin: 35 0 0 15;
         }
     </style>
 </head>
 <body>
-  <p class='text'>
-    An interactive exploration of data. Charted above is C02 emission data over time (<u><a href='http://data.worldbank.org/indicator/EN.ATM.CO2E.PC'>source</a></u>)
-    as well as cost of OPEC oil. Most interestingly, the visualization can be commented-on (by double-clicking) the timeline.
-  </p>
-  <a href="https://github.com/arjunblj"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+  <div class='text'>
+    <p>
+      An interactive exploration of data. Charted above is C02 emission data over time (<u><a href='http://data.worldbank.org/indicator/EN.ATM.CO2E.PC'>source</a></u>)
+      as well as cost of OPEC oil. Most interestingly, the visualization can be interacted with, through comments.
+    </p>
+    <p>
+      One of my aims was to create a prototype of a public art piece that people can interact with. I believe one of the reasons why public displays (e.g. graffiti, murals)
+      are so effective is because people <i>interact</i> with the finished product, instead of merely "looking" and consuming.
+    </p>
+    <p>
+      My hope is that you (the consumer) comment but my greater desire is to create a dialogue around how this piece can be extended to be made more effective. All of <thead>
+      code and data sets used are open-source (on GitHub above).
+    </p>
+  </div>
+  <a href="https://github.com/arjunblj/climate-interaction"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
   <div id="timeline"></div>
+  <p class='instructions'>
+    To use: double-click above to comment. Use the scrollbar to zoom in on a year, or click-and-drag to explore different portions of axes.
+  </p>
   <br>
   <!-- <form>
     Name (not required):<br>

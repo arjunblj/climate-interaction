@@ -18,7 +18,7 @@ years.map((year, i) => {
     [new Date(parseInt(year), 1, 1),
      new Date(parseInt(year) + 1, 1, 1),
      requirement + actual,
-     'CO2 emissions (metric tons per capita)',
+     'USA CO2 emissions (metric tons per capita)',
      false
     ]
   )
