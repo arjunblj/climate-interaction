@@ -1,0 +1,92 @@
+<html>
+<head>
+    <title>Timeline demo</title>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="lib/timeline.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="chart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBPfUR-DnHDio8iOwx66fFRNRq3b6CvxpA",
+        authDomain: "cc-viz.firebaseapp.com",
+        databaseURL: "https://cc-viz.firebaseio.com",
+        storageBucket: "cc-viz.appspot.com",
+        messagingSenderId: "344257415978"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript" src="comment.js"></script>
+    <style type="text/css">
+        body {font: 10pt Avenir;}
+
+        div.timeline-event {
+            border: none;
+            background: none;
+            border-radius: 0;
+        }
+        div.timeline-event-selected {
+            border: none;
+            background: none;
+        }
+        div.timeline-event-content {
+            margin: 0;
+        }
+        div.timeline-event-range {
+            border: none;
+            border-radius: 0;
+            height: 100px;
+            width: 100%;
+            position: relative;
+            overflow: visible;
+        }
+        div.bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            /* height and color is set for each individual bar */
+        }
+        div.requirement {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            border-top: 2px solid gray;
+            background: #e5e5e5;
+            opacity: 0.5;
+        }
+        #timeline {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          top: 200px;
+        }
+        .text {
+          width: 85%;
+          margin: 0 auto 0 15%;
+        }
+    </style>
+</head>
+<body>
+  <p class='text'>
+    An interactive exploration of data. Charted above is C02 emission data over time (<u><a href='http://data.worldbank.org/indicator/EN.ATM.CO2E.PC'>source</a></u>)
+    as well as cost of OPEC oil. Most interestingly, the visualization can be commented-on (by double-clicking) the timeline.
+  </p>
+  <a href="https://github.com/arjunblj"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+  <div id="timeline"></div>
+  <br>
+  <!-- <form>
+    Name (not required):<br>
+    <input type="text" name="name"><br>
+    Comment:<br>
+    <input type="text" name="comment">
+    <input type="submit" value="Submit">
+  </form> -->
+</body>
+</html>
